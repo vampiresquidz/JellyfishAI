@@ -28,8 +28,17 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 
+/* Higgsfield hero dreamscape, faded into the void */
+.herobg {
+  position: absolute; top: 0; left: 0; right: 0; height: 920px; z-index: 0; pointer-events: none;
+  background: url("assets/hero-bg.png") center top / cover no-repeat;
+  opacity: .95;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,.65) 52%, transparent 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,.65) 52%, transparent 100%);
+}
+
 /* Ambient aurora */
-.aurora { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.aurora { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; opacity: .8; }
 .aurora .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .55; }
 .blob.b1 { width: 55vw; height: 55vw; top: -16vw; left: -12vw; background: radial-gradient(circle, var(--violet), transparent 68%); }
 .blob.b2 { width: 50vw; height: 50vw; top: 8vw; right: -18vw; background: radial-gradient(circle, var(--indigo), transparent 66%); opacity: .5; }
@@ -60,6 +69,9 @@ a { color: inherit; text-decoration: none; }
 /* Hero */
 .hero { max-width: var(--maxw); margin: 0 auto; padding: clamp(16px,3vw,40px) clamp(20px,5vw,40px) clamp(30px,6vw,70px);
   display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(24px, 5vw, 60px); align-items: center; }
+.hero-copy .eyebrow, .hero-copy h1, .hero-copy .lede, .hero-copy .form-note {
+  text-shadow: 0 2px 26px rgba(6,6,16,.62), 0 1px 3px rgba(6,6,16,.5);
+}
 .eyebrow { font-family: var(--display); text-transform: uppercase; letter-spacing: .22em; font-size: 12.5px; color: var(--amber); margin: 0 0 14px; }
 h1 { font-family: var(--display); font-weight: 800; letter-spacing: -0.025em; line-height: 1.03;
   font-size: clamp(38px, 6.5vw, 68px); margin: 0 0 18px; text-wrap: balance; }
@@ -120,7 +132,14 @@ p { margin: 0 0 14px; }
 .jelly-copy .btn { margin-top: 10px; }
 
 /* CTA */
-.cta-inner { background: linear-gradient(160deg, rgba(149,133,230,.14), rgba(74,199,204,.08));
+.cta { position: relative; }
+.cta::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: url("assets/band-bg.png") center / cover no-repeat; opacity: .32;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 25%, transparent 76%);
+  mask-image: radial-gradient(ellipse at center, #000 25%, transparent 76%);
+}
+.cta-inner { position: relative; background: linear-gradient(160deg, rgba(149,133,230,.14), rgba(74,199,204,.08));
   border: 1px solid var(--stroke-2); border-radius: 30px; padding: clamp(34px, 6vw, 64px); text-align: center; }
 .cta-inner h2 { margin: 0 auto 12px; max-width: 22ch; }
 .cta-inner .waitlist { margin: 22px auto 0; }
@@ -148,9 +167,9 @@ p { margin: 0 0 14px; }
 .toast-card h3 { font-size: 23px; margin: 6px 0 8px; }
 .toast-card p { color: var(--ink-2); margin: 0 0 20px; }
 
-/* Reveal on scroll */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.in { opacity: 1; transform: none; }
+/* Reveal on scroll — only hides once JS is present (progressive enhancement) */
+.js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
 
 /* Responsive */
 @media (max-width: 860px) {

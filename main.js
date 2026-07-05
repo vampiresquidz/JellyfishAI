@@ -1,5 +1,8 @@
 // HypnoFlow landing — mascot animation, waitlist capture, scroll reveals
 
+// Mark that JS is active so reveal animations engage (content is visible without it).
+document.documentElement.classList.add('js');
+
 // --- Animated Professor Jelly (sprite-sheet, same asset as the app) ---
 function initMascots() {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -81,11 +84,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();
 
-  // Scroll reveal
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((en) => {
-      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  // Scroll reveal (fall back to fully visible if unsupported)
+  const revealables = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    revealables.forEach((el) => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    revealables.forEach((el) => io.observe(el));
+  }
 });
