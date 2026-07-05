@@ -6,42 +6,46 @@ palette) with an animated **Professor Jelly** mascot.
 
 ## Run locally
 
-Any static server works. From this folder:
-
 ```bash
-python -m http.server 8000
-# then open http://localhost:8000
+python -m http.server 4321
+# open http://localhost:4321
 ```
 
-(Opening `index.html` directly as a file also works, except the form POST —
-locally it falls back to saving entries in `localStorage` so you can test the UX.)
+## Collect emails (Web3Forms — works on any host)
 
-## Deploy + collect signups
+The form posts to **[Web3Forms](https://web3forms.com)**, so signups work on any
+static host (DigitalOcean, GitHub Pages, Netlify …) with no backend. Each signup
+is emailed to you.
 
-### Option A — Netlify (recommended, zero backend)
-The form is already set up for **Netlify Forms** (`data-netlify="true"`).
+1. Go to <https://web3forms.com>, enter the email where you want signups sent, and
+   copy the **access key** (free, instant).
+2. In `index.html`, replace **both** occurrences of `YOUR_WEB3FORMS_ACCESS_KEY`
+   with your key.
+3. Done — every submission arrives in your inbox. (Web3Forms also offers a Google
+   Sheets / webhook integration if you'd rather pipe them into a list.)
 
-1. Push this folder to a Git repo, or drag-and-drop it onto <https://app.netlify.com/drop>.
-2. That's it — every signup appears under **Site → Forms → “waitlist”** in the
-   Netlify dashboard. Export to CSV anytime; add a notification email/webhook there.
+Until the key is set, submissions fall back to `localStorage` so you can test the UX.
 
-### Option B — Formspree
-Prefer Formspree? In `main.js`, change the `fetch('/', …)` call to your Formspree
-endpoint (`https://formspree.io/f/XXXXXXXX`) and remove the `data-netlify` attributes
-from the two `<form>` tags in `index.html`.
+## Host on DigitalOcean (App Platform)
+
+Static site, `.do/app.yaml` included.
+
+1. Push this repo to GitHub (see below).
+2. DigitalOcean → **Apps → Create App** → connect the GitHub repo `JellyfishAI`.
+   It auto-detects a static site; keep the defaults (index `index.html`) and deploy.
+   Or via CLI: `doctl apps create --spec .do/app.yaml`.
+3. Every `git push` to `main` redeploys automatically. Add a custom domain under
+   the app's **Settings → Domains**.
 
 ## Customize
 
-- **The offer:** the "3 months of Pro free" founding-member perk lives in
-  `index.html` (search `founding`). Swap it for whatever incentive you want.
 - **Copy & FAQ:** all in `index.html`.
 - **Colors/branding:** CSS variables at the top of `styles.css`.
-- **Mascot:** the animation is a sprite sheet (`assets/mascot-*-sheet.png`, a 6×5
-  grid of 30 frames) driven by `main.js` — the same asset the app uses. Swap the
-  `data-sheet` on any `.mascot` element to change pose (wave / hypno).
+- **Mascot:** a sprite sheet (`assets/mascot-*-sheet.png`, a 6×5 grid of 30 frames)
+  driven by `main.js` — the same asset the app uses. Adjust `data-fps` on any
+  `.mascot` element to change its speed, or swap `data-sheet` to change pose.
 
 ## Assets
 
-Generated with Higgsfield (hero dreamscape, mascot art) and composited locally
-(`og-image.png`, favicons). Professor Jelly poses and animations are shared with
-the HypnoFlow app.
+Hero dreamscape and mascot art generated with Higgsfield; `og-image.png` and
+favicons composited locally. Professor Jelly is shared with the HypnoFlow app.

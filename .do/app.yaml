@@ -1,0 +1,14 @@
+# DigitalOcean App Platform spec — static site.
+# Deploy: DigitalOcean → Apps → Create App → connect the GitHub repo, or:
+#   doctl apps create --spec .do/app.yaml
+name: hypnoflow-landing
+region: nyc
+static_sites:
+  - name: web
+    github:
+      repo: vampiresquidz/JellyfishAI
+      branch: main
+      deploy_on_push: true
+    source_dir: /
+    index_document: index.html
+    error_document: index.html

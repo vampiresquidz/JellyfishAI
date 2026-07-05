@@ -48,18 +48,18 @@ function wireForm(form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = new FormData(form);
-    if (data.get('bot-field')) return; // honeypot tripped
-
-    const body = new URLSearchParams();
-    data.forEach((v, k) => body.append(k, v));
+    if (data.get('botcheck')) return; // honeypot tripped
 
     try {
-      const res = await fetch('/', {
+      // Web3Forms — works on any static host (DigitalOcean, GitHub Pages, etc.)
+      // and emails each signup to the address tied to the access key.
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body.toString(),
+        headers: { Accept: 'application/json' },
+        body: data,
       });
-      if (!res.ok) throw new Error('non-ok');
+      const json = await res.json().catch(() => ({}));
+      if (!json.success) throw new Error('submit-failed');
     } catch (_) {
       // Local preview or non-Netlify host: stash so nothing is lost during testing.
       try {
