@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HypnoFlow — AI hypnosis & meditations made just for you</title>
+  <meta name="description" content="HypnoFlow writes and voices a personalized hypnosis session for whatever's on your mind — sleep, calm, focus, confidence. Join the waitlist for early access." />
+
+  <!-- Open Graph / social -->
+  <meta property="og:title" content="HypnoFlow — meditations made just for you" />
+  <meta property="og:description" content="AI-crafted, human-voiced hypnosis sessions for sleep, calm, focus and confidence. Join the waitlist." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="aurora" aria-hidden="true">
+    <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  </div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <a class="brand" href="#top">
+      <img src="assets/icon.png" alt="" width="34" height="34" />
+      <span>HypnoFlow</span>
+    </a>
+    <a class="btn btn-ghost nav-cta" href="#join">Join the waitlist</a>
+  </header>
+
+  <!-- HERO -->
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Coming soon to iPhone</p>
+        <h1>Meditations made <span class="grad">just for you</span>.</h1>
+        <p class="lede">Tell Professor Jelly what's on your mind and he writes &amp; voices a personalized hypnosis journey — a calming countdown in, a guided meditation on your goal, a gentle count back out. Sleep, calm, focus, confidence.</p>
+
+        <form id="waitlist" class="waitlist" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="waitlist" />
+          <p class="hp"><label>Leave this empty <input name="bot-field" /></label></p>
+          <div class="fields">
+            <input class="field" type="text" name="username" placeholder="Pick a username" autocomplete="username" required />
+            <input class="field" type="email" name="email" placeholder="you@email.com" autocomplete="email" required />
+            <button class="btn btn-primary" type="submit">Get early access</button>
+          </div>
+          <p class="form-note" id="formNote">Founding members get <b>3 months of Pro free</b> at launch. No spam — one launch email.</p>
+        </form>
+      </div>
+
+      <div class="hero-mascot reveal">
+        <div class="mascot-stage">
+          <div class="mascot"
+               data-sheet="assets/mascot-wave-sheet.png"
+               data-cols="6" data-rows="5" data-frames="30" data-fps="15"
+               role="img" aria-label="Professor Jelly, the HypnoFlow mascot, waving hello"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how">
+      <p class="kicker reveal">How it works</p>
+      <h2 class="reveal">Three taps to a session that fits your head today</h2>
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n">1</span>
+          <img src="assets/pose-hypno.png" alt="" class="step-art" />
+          <h3>Tell it your goal</h3>
+          <p>Pick a focus — sleep, anxiety, confidence, calm — and add a sentence about what's really going on.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-n">2</span>
+          <img src="assets/pose-meditate.png" alt="" class="step-art" />
+          <h3>AI writes &amp; voices it</h3>
+          <p>A hypnotherapist-grade script is generated and narrated in a warm, human voice, layered over a soundscape.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-n">3</span>
+          <img src="assets/pose-sleep.png" alt="" class="step-art" />
+          <h3>Drift into the journey</h3>
+          <p>Counted gently into a hypnotic state, guided through your meditation, then eased back out — or into sleep.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="features">
+      <p class="kicker reveal">Why HypnoFlow</p>
+      <h2 class="reveal">Not another library of pre-recorded tracks</h2>
+      <div class="grid">
+        <article class="card reveal"><span class="dot"></span><h3>Truly personalized</h3><p>Every session is written around your exact goal and intention — never a generic recording.</p></article>
+        <article class="card reveal"><span class="dot teal"></span><h3>Real, human-quality voice</h3><p>Studio-grade narration you'd actually want in your ears, in the voice you choose.</p></article>
+        <article class="card reveal"><span class="dot violet"></span><h3>A proper hypnotic arc</h3><p>Countdown induction → guided meditation → count-out. The structure real hypnotherapists use.</p></article>
+        <article class="card reveal"><span class="dot"></span><h3>Made for sleep</h3><p>Ask for sleep and it never wakes you — it drifts you down into deep, natural rest.</p></article>
+        <article class="card reveal"><span class="dot teal"></span><h3>Soundscapes &amp; length</h3><p>Dream, deep-sleep or focus beds, and 5 to 20-minute sessions to fit the moment.</p></article>
+        <article class="card reveal"><span class="dot violet"></span><h3>Your growing library</h3><p>Every session you make is saved, searchable and replayable whenever you need it.</p></article>
+      </div>
+    </section>
+
+    <!-- MEET PROFESSOR JELLY -->
+    <section class="section jelly" id="jelly">
+      <div class="jelly-art reveal">
+        <div class="mascot-stage sm">
+          <div class="mascot"
+               data-sheet="assets/mascot-hypno-sheet.png"
+               data-cols="6" data-rows="5" data-frames="30" data-fps="15"
+               role="img" aria-label="Professor Jelly swinging a hypnotic pocket watch"></div>
+        </div>
+      </div>
+      <div class="jelly-copy reveal">
+        <p class="kicker">Meet your guide</p>
+        <h2>Professor Jelly will see you now</h2>
+        <p>A wild-haired, spiral-eyed jellyfish professor with a pocket watch and a soothing bedside manner. He's the friendly face of the science behind HypnoFlow — and he'll be waiting when you open the app.</p>
+        <a class="btn btn-primary" href="#join">Save my spot</a>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section cta" id="join">
+      <div class="cta-inner reveal">
+        <h2>Be among the first to drift off with HypnoFlow</h2>
+        <p class="lede center">Join the waitlist and claim your founding-member perks before launch.</p>
+        <form class="waitlist" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="waitlist" />
+          <p class="hp"><label>Leave this empty <input name="bot-field" /></label></p>
+          <div class="fields">
+            <input class="field" type="text" name="username" placeholder="Pick a username" autocomplete="username" required />
+            <input class="field" type="email" name="email" placeholder="you@email.com" autocomplete="email" required />
+            <button class="btn btn-primary" type="submit">Get early access</button>
+          </div>
+          <p class="form-note">3 months of Pro free for founding members · No spam, ever.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <p class="kicker reveal">Questions</p>
+      <h2 class="reveal">Good to know</h2>
+      <div class="faq">
+        <details class="reveal"><summary>When does it launch?</summary><p>We're in the final stretch on iPhone. Join the waitlist and you'll get one email the day it goes live — plus early access before the public.</p></details>
+        <details class="reveal"><summary>What will it cost?</summary><p>A subscription includes monthly credits to generate sessions, with affordable top-ups if you want more. Founding members on the waitlist get 3 months of Pro free.</p></details>
+        <details class="reveal"><summary>Is this real hypnosis?</summary><p>It uses the same language patterns and structure clinical hypnotherapists use — progressive relaxation, counting inductions, positive suggestion — for relaxation and wellbeing. It's not medical treatment.</p></details>
+        <details class="reveal"><summary>Which devices?</summary><p>iPhone first. Add your email and we'll tell you the moment other platforms are ready.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="brand">
+      <img src="assets/icon.png" alt="" width="28" height="28" />
+      <span>HypnoFlow</span>
+    </div>
+    <p>© <span id="year"></span> HypnoFlow · Made with a little help from Professor Jelly.</p>
+  </footer>
+
+  <!-- Success overlay -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <div class="toast-card">
+      <div class="mascot-stage tiny">
+        <div class="mascot" data-sheet="assets/mascot-wave-sheet.png" data-cols="6" data-rows="5" data-frames="30" data-fps="15" aria-hidden="true"></div>
+      </div>
+      <h3>You're on the list! 🪼</h3>
+      <p>Professor Jelly will send one note the moment HypnoFlow is live.</p>
+      <button class="btn btn-ghost" id="toastClose">Close</button>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

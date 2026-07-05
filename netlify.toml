@@ -1,0 +1,5 @@
+[build]
+  publish = "."
+
+# Static site — no build step. Netlify Forms auto-detects the "waitlist" form
+# in index.html and collects submissions under Site → Forms.
