@@ -44,6 +44,39 @@ function showToast() {
 }
 function hideToast() { if (toast) toast.hidden = true; }
 
+// --- Waitlist counter (starts at 121; ticks up when someone joins) ---
+const COUNT_BASE = 121;
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function joinedExtra() {
+  const n = parseInt(localStorage.getItem('hypnoflow_joined') || '0', 10);
+  return Math.min(isNaN(n) ? 0 : n, 25);
+}
+function countTarget() { return COUNT_BASE + joinedExtra(); }
+
+function animateCount(el, from, to, dur) {
+  if (reduceMotion) { el.textContent = to.toLocaleString(); return; }
+  const start = performance.now();
+  const step = (t) => {
+    const p = Math.min((t - start) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(from + (to - from) * eased).toLocaleString();
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+function renderCount(fromLoad) {
+  const el = document.getElementById('count');
+  if (!el) return;
+  const to = countTarget();
+  animateCount(el, fromLoad ? Math.max(to - 34, 0) : to - 1, to, fromLoad ? 1400 : 600);
+}
+function bumpCount() {
+  const n = joinedExtra() + 1;
+  localStorage.setItem('hypnoflow_joined', String(n));
+  renderCount(false);
+}
+
 function wireForm(form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -69,6 +102,7 @@ function wireForm(form) {
       } catch (_) {}
     }
     form.reset();
+    bumpCount();
     showToast();
   });
 }
@@ -83,6 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();
+
+  renderCount(true);
 
   // Scroll reveal (fall back to fully visible if unsupported)
   const revealables = document.querySelectorAll('.reveal');

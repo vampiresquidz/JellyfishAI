@@ -87,6 +87,11 @@ h1 { font-family: var(--display); font-weight: 800; letter-spacing: -0.025em; li
 .field::placeholder { color: var(--ink-faint); }
 .field:focus { outline: none; border-color: var(--amber); box-shadow: 0 0 0 3px rgba(250,199,107,.18); }
 .waitlist .btn-primary { flex: 0 0 auto; }
+.counter { display: flex; align-items: center; gap: 9px; font-size: 14px; color: var(--ink-2); margin: 18px 2px 0; }
+.counter b { color: var(--ink); font-variant-numeric: tabular-nums; font-family: var(--display); }
+.pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 0 rgba(74,199,204,.6);
+  animation: pulse 2.2s ease-out infinite; flex: 0 0 auto; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(74,199,204,.55); } 70% { box-shadow: 0 0 0 10px rgba(74,199,204,0); } 100% { box-shadow: 0 0 0 0 rgba(74,199,204,0); } }
 .form-note { font-size: 13px; color: var(--ink-faint); margin: 12px 2px 0; }
 .form-note b { color: var(--ink-2); }
 .hp { position: absolute; left: -9999px; }
@@ -187,7 +192,7 @@ p { margin: 0 0 14px; }
   .steps, .grid { grid-template-columns: 1fr 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mascot { animation: none; }
+  .mascot, .pulse { animation: none; }
   html { scroll-behavior: auto; }
   .reveal { transition: none; opacity: 1; transform: none; }
 }
