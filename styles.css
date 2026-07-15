@@ -121,6 +121,27 @@ p { margin: 0 0 14px; }
 .step-art { width: 108px; height: 108px; object-fit: contain; margin-bottom: 10px; filter: drop-shadow(0 10px 20px rgba(0,0,0,.4)); }
 .step p { color: var(--ink-2); font-size: 15px; margin: 0; }
 
+/* Demo video (phone frame) */
+.demo { display: flex; flex-direction: column; align-items: center; gap: 22px; margin: 4px auto 46px; }
+.phone {
+  position: relative; width: min(300px, 74vw); aspect-ratio: 1080 / 1920;
+  padding: 10px; border-radius: 46px;
+  background: linear-gradient(160deg, #23233a, #0c0c16 60%);
+  box-shadow: 0 30px 70px -20px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.06),
+    inset 0 0 0 2px rgba(255,255,255,.04);
+}
+.phone::before { /* soft brand glow */
+  content: ""; position: absolute; inset: -14% -10% -8%; z-index: -1; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(149,133,230,.5), transparent 70%);
+  filter: blur(18px); opacity: .7;
+}
+.phone-screen { width: 100%; height: 100%; object-fit: cover; border-radius: 36px; display: block; background: #05050c; }
+.phone-notch {
+  position: absolute; top: 18px; left: 50%; transform: translateX(-50%); z-index: 2;
+  width: 34%; height: 22px; border-radius: 0 0 16px 16px; background: #05050a;
+}
+.demo-cap { color: var(--ink-2); font-size: 15px; max-width: 40ch; text-align: center; margin: 0; }
+
 /* Feature grid */
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .card { background: var(--panel); border: 1px solid var(--stroke); border-radius: 20px; padding: 24px; }
